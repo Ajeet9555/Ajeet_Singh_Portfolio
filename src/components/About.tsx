@@ -6,19 +6,19 @@ export const About: React.FC = () => {
   const cards = [
     {
       title: "Education",
-      icon: <GraduationCap className="w-5 h-5 text-blue-400" />,
+      icon: <GraduationCap className="w-5 h-5 text-[#C76B32]" />,
       content: (
         <div>
-          <span className="font-semibold text-white block text-sm">
+          <span className="font-semibold text-[#111111] block text-sm">
             {personalData.education.degree}
           </span>
-          <span className="text-xs text-blue-400 block font-medium">
+          <span className="text-xs text-[#C76B32] block font-semibold mt-0.5">
             {personalData.education.specialization}
           </span>
-          <span className="text-xs text-slate-400 block mt-1">
+          <span className="text-xs text-[#5F5A54] block mt-1">
             {personalData.education.institution} ({personalData.education.duration})
           </span>
-          <span className="inline-block mt-1 px-2 py-0.5 rounded bg-blue-600/20 text-blue-300 text-[11px] font-bold">
+          <span className="inline-block mt-2 px-2.5 py-0.5 rounded bg-[#F8E9DD] text-[#C76B32] text-[11px] font-extrabold border border-[#E7D2C3]">
             CGPA: {personalData.education.cgpa}
           </span>
         </div>
@@ -26,16 +26,16 @@ export const About: React.FC = () => {
     },
     {
       title: "Experience",
-      icon: <Briefcase className="w-5 h-5 text-purple-400" />,
+      icon: <Briefcase className="w-5 h-5 text-[#C76B32]" />,
       content: (
         <div>
-          <span className="font-semibold text-white block text-sm">
+          <span className="font-semibold text-[#111111] block text-sm">
             ML Intern
           </span>
-          <span className="text-xs text-purple-400 block font-medium">
+          <span className="text-xs text-[#C76B32] block font-semibold mt-0.5">
             LogicBot Pvt Ltd
           </span>
-          <span className="text-xs text-slate-400 block mt-1">
+          <span className="text-xs text-[#5F5A54] block mt-1">
             Dec 2025 - May 2026
           </span>
         </div>
@@ -43,13 +43,13 @@ export const About: React.FC = () => {
     },
     {
       title: "Location",
-      icon: <MapPin className="w-5 h-5 text-emerald-400" />,
+      icon: <MapPin className="w-5 h-5 text-[#C76B32]" />,
       content: (
         <div>
-          <span className="font-semibold text-white block text-sm">
+          <span className="font-semibold text-[#111111] block text-sm">
             Noida, India
           </span>
-          <span className="text-xs text-slate-400 block mt-1">
+          <span className="text-xs text-[#5F5A54] block mt-1">
             Open to Relocation & Remote Roles
           </span>
         </div>
@@ -57,16 +57,16 @@ export const About: React.FC = () => {
     },
     {
       title: "Phone",
-      icon: <Phone className="w-5 h-5 text-amber-400" />,
+      icon: <Phone className="w-5 h-5 text-[#C76B32]" />,
       content: (
         <div>
           <a 
             href={`tel:${personalData.phone.replace(/\s+/g, '')}`}
-            className="font-semibold text-white hover:text-blue-400 transition-colors block text-sm"
+            className="font-semibold text-[#111111] hover:text-[#C76B32] transition-colors block text-sm"
           >
             {personalData.phone}
           </a>
-          <span className="text-xs text-slate-400 block mt-1">
+          <span className="text-xs text-[#5F5A54] block mt-1">
             Direct & WhatsApp Available
           </span>
         </div>
@@ -74,16 +74,16 @@ export const About: React.FC = () => {
     },
     {
       title: "Email",
-      icon: <Mail className="w-5 h-5 text-rose-400" />,
+      icon: <Mail className="w-5 h-5 text-[#C76B32]" />,
       content: (
         <div>
           <a 
             href={`mailto:${personalData.email}`}
-            className="font-semibold text-white hover:text-blue-400 transition-colors block text-sm break-all"
+            className="font-semibold text-[#111111] hover:text-[#C76B32] transition-colors block text-sm break-all"
           >
             {personalData.email}
           </a>
-          <span className="text-xs text-slate-400 block mt-1">
+          <span className="text-xs text-[#5F5A54] block mt-1">
             Professional Correspondence
           </span>
         </div>
@@ -91,14 +91,14 @@ export const About: React.FC = () => {
     },
     {
       title: "Links",
-      icon: <ExternalLink className="w-5 h-5 text-cyan-400" />,
+      icon: <ExternalLink className="w-5 h-5 text-[#C76B32]" />,
       content: (
-        <div className="flex items-center gap-3 mt-1">
+        <div className="flex items-center gap-2.5 mt-2">
           <a
             href={personalData.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs font-semibold px-3 py-1.5 rounded-lg bg-blue-600/20 text-blue-300 hover:bg-blue-600 hover:text-white transition-colors"
+            className="text-xs font-bold px-3 py-1.5 rounded-lg bg-[#F8E9DD] text-[#C76B32] border border-[#E7D2C3] hover:bg-[#C76B32] hover:text-white transition-colors"
           >
             LinkedIn
           </a>
@@ -106,7 +106,7 @@ export const About: React.FC = () => {
             href={personalData.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs font-semibold px-3 py-1.5 rounded-lg bg-purple-600/20 text-purple-300 hover:bg-purple-600 hover:text-white transition-colors"
+            className="text-xs font-bold px-3 py-1.5 rounded-lg bg-[#F8E9DD] text-[#C76B32] border border-[#E7D2C3] hover:bg-[#C76B32] hover:text-white transition-colors"
           >
             GitHub
           </a>
@@ -116,27 +116,26 @@ export const About: React.FC = () => {
   ];
 
   return (
-    <section id="about" className="py-20 bg-[#0a0d14] relative">
+    <section id="about" className="py-20 bg-[#FAF8F3] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-950/60 border border-blue-500/30 text-blue-400 text-xs font-medium mb-3">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#F8E9DD] border border-[#E5A06A] text-[#C76B32] text-xs font-semibold mb-3 shadow-warm-sm">
             <User className="w-3.5 h-3.5" />
             <span>Biography & Highlights</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-            About <span className="text-gradient-blue-purple">Me</span>
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-[#111111] tracking-tight">
+            About <span className="text-[#C76B32]">Me</span>
           </h2>
-          <p className="mt-3 text-slate-400 text-base sm:text-lg">
+          <p className="mt-3 text-[#5F5A54] text-base sm:text-lg">
             Get to know more about my journey, skills and what drives me.
           </p>
         </div>
 
         {/* Bio Banner Card */}
-        <div className="p-8 rounded-3xl bg-[#131929] border border-blue-500/20 shadow-xl mb-10 relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
-          <p className="text-slate-200 text-lg leading-relaxed relative z-10 font-medium">
+        <div className="p-8 rounded-3xl bg-white border border-[#E7E1D8] shadow-warm-md mb-10 relative overflow-hidden">
+          <p className="text-[#111111] text-lg leading-relaxed font-medium">
             "{personalData.aboutBio}"
           </p>
         </div>
@@ -146,13 +145,13 @@ export const About: React.FC = () => {
           {cards.map((card) => (
             <div
               key={card.title}
-              className="p-6 rounded-2xl bg-[#131929] border border-blue-500/15 hover:border-blue-500/40 hover:bg-[#182035] transition-all duration-300 group shadow-lg"
+              className="p-6 rounded-2xl bg-white border border-[#E7E1D8] hover:border-[#E5A06A] hover:bg-[#F8E9DD]/20 transition-all duration-300 group shadow-warm-sm"
             >
-              <div className="flex items-center gap-3 mb-4 pb-3 border-b border-slate-800">
-                <div className="p-2.5 rounded-xl bg-[#0a0d14] border border-slate-800 group-hover:scale-110 transition-transform">
+              <div className="flex items-center gap-3 mb-4 pb-3 border-b border-[#E7E1D8]">
+                <div className="p-2.5 rounded-xl bg-[#F8E9DD] border border-[#E7D2C3] group-hover:scale-105 transition-transform">
                   {card.icon}
                 </div>
-                <h3 className="font-heading font-bold text-base text-white">
+                <h3 className="font-heading font-bold text-base text-[#111111]">
                   {card.title}
                 </h3>
               </div>

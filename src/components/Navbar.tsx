@@ -46,7 +46,7 @@ export const Navbar: React.FC = () => {
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled 
-        ? 'bg-[#0a0d14]/85 backdrop-blur-md border-b border-slate-800/60 shadow-lg shadow-black/20 py-3' 
+        ? 'bg-white/90 backdrop-blur-md border-b border-[#E7E1D8] shadow-warm-sm py-3' 
         : 'bg-transparent py-5'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -54,31 +54,31 @@ export const Navbar: React.FC = () => {
           
           {/* Logo & Brand */}
           <a href="#home" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-purple-600 flex items-center justify-center font-bold text-white shadow-glow-sm group-hover:scale-105 transition-transform">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#C76B32] to-[#E5A06A] flex items-center justify-center font-bold text-white shadow-orange-sm group-hover:scale-105 transition-transform">
               {personalData.logoText}
             </div>
             <div className="flex flex-col">
-              <span className="font-heading font-bold text-lg text-white group-hover:text-blue-400 transition-colors">
+              <span className="font-heading font-extrabold text-lg text-[#111111] group-hover:text-[#C76B32] transition-colors">
                 {personalData.name}
               </span>
-              <span className="text-xs text-slate-400 font-medium hidden sm:inline-block">
+              <span className="text-xs text-[#5F5A54] font-medium hidden sm:inline-block">
                 {personalData.primaryTitle}
               </span>
             </div>
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden xl:flex items-center gap-1 bg-[#131929]/70 backdrop-blur-md px-4 py-1.5 rounded-full border border-blue-500/15">
+          <nav className="hidden xl:flex items-center gap-1 bg-white border border-[#E7E1D8] px-4 py-1.5 rounded-full shadow-warm-sm">
             {navLinks.map((link) => {
               const isActive = activeSection === link.href.substring(1);
               return (
                 <a
                   key={link.name}
                   href={link.href}
-                  className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
+                  className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 ${
                     isActive
-                      ? 'bg-blue-600/90 text-white shadow-sm'
-                      : 'text-slate-300 hover:text-white hover:bg-slate-800/50'
+                      ? 'bg-[#C76B32] text-white shadow-sm'
+                      : 'text-[#111111] hover:text-[#C76B32] hover:bg-[#F8E9DD]/60'
                   }`}
                 >
                   {link.name}
@@ -87,13 +87,13 @@ export const Navbar: React.FC = () => {
             })}
           </nav>
 
-          {/* Right Action Button */}
+          {/* Right Action Button (Download Resume) */}
           <div className="hidden lg:flex items-center gap-3">
             <a
               href={personalData.resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 shadow-glow-sm hover:shadow-glow-md transition-all duration-300 hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold text-white bg-[#C76B32] hover:bg-[#A95322] shadow-orange-sm transition-all duration-200 hover:-translate-y-0.5"
             >
               <Download className="w-3.5 h-3.5" />
               <span>Download Resume</span>
@@ -106,14 +106,14 @@ export const Navbar: React.FC = () => {
               href={personalData.resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-lg bg-blue-600/20 border border-blue-500/30 text-blue-400 hover:bg-blue-600 hover:text-white transition-colors"
+              className="p-2 rounded-lg bg-[#F8E9DD] border border-[#E7D2C3] text-[#C76B32] hover:bg-[#C76B32] hover:text-white transition-colors"
               title="Download Resume"
             >
               <Download className="w-4 h-4" />
             </a>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2.5 rounded-xl bg-slate-800/80 text-slate-300 hover:text-white hover:bg-slate-700 transition-colors focus:outline-none"
+              className="p-2.5 rounded-xl bg-white border border-[#E7E1D8] text-[#111111] hover:text-[#C76B32] hover:bg-[#F8E9DD] transition-colors focus:outline-none"
               aria-label="Toggle Navigation Menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -122,15 +122,15 @@ export const Navbar: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Menu Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#0d121f]/95 backdrop-blur-xl border-b border-slate-800 px-4 pt-3 pb-6 space-y-2 animate-fadeIn">
+        <div className="lg:hidden bg-white/98 backdrop-blur-xl border-b border-[#E7E1D8] px-4 pt-3 pb-6 space-y-2 animate-fadeIn shadow-warm-lg">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-4 py-2.5 rounded-xl text-sm font-medium text-slate-200 hover:bg-blue-600/20 hover:text-blue-400 transition-colors"
+              className="block px-4 py-2.5 rounded-xl text-sm font-semibold text-[#111111] hover:bg-[#F8E9DD] hover:text-[#C76B32] transition-colors"
             >
               {link.name}
             </a>
@@ -140,7 +140,7 @@ export const Navbar: React.FC = () => {
               href={personalData.resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 w-full py-3 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 shadow-glow-sm"
+              className="flex items-center justify-center gap-2 w-full py-3 rounded-xl text-sm font-bold text-white bg-[#C76B32] hover:bg-[#A95322] shadow-orange-sm"
             >
               <Download className="w-4 h-4" />
               Download Resume

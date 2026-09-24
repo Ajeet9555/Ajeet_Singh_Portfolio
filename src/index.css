@@ -4,14 +4,15 @@
 
 @layer base {
   body {
-    background-color: #0a0d14;
-    color: #f1f5f9;
+    background-color: #FAF8F3;
+    color: #111111;
     font-family: 'Plus Jakarta Sans', sans-serif;
     overflow-x: hidden;
   }
   
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Outfit', sans-serif;
+    color: #111111;
   }
 }
 
@@ -21,24 +22,24 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0d14;
+  background: #FAF8F3;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
+  background: #E7E1D8;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #3b82f6;
+  background: #C76B32;
 }
 
-/* Glassmorphism utilities */
-.glass-panel {
-  background: rgba(19, 25, 41, 0.75);
+/* Glassmorphism & Card Utilities */
+.glass-panel-light {
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(59, 130, 246, 0.15);
+  border: 1px solid #E7E1D8;
 }
 
 .glass-panel-hover {
@@ -46,35 +47,24 @@
 }
 
 .glass-panel-hover:hover {
-  background: rgba(24, 32, 53, 0.85);
-  border-color: rgba(59, 130, 246, 0.4);
-  box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.25);
+  border-color: #E5A06A;
+  box-shadow: 0 10px 30px -10px rgba(199, 107, 50, 0.12);
   transform: translateY(-2px);
 }
 
-/* Ambient Glow Gradients */
+/* Ambient Glow & Warm Gradients */
 .bg-gradient-glow {
-  background: radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.18) 0%, rgba(139, 92, 246, 0.08) 50%, rgba(10, 13, 20, 0) 100%);
+  background: radial-gradient(circle at 50% 0%, rgba(248, 233, 221, 0.7) 0%, rgba(253, 243, 236, 0.3) 50%, rgba(250, 248, 243, 0) 100%);
 }
 
-.bg-gradient-hero {
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(139, 92, 246, 0.15) 50%, rgba(10, 13, 20, 0) 100%);
-}
-
-.text-gradient-primary {
-  background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, #60a5fa 100%);
+.text-gradient-orange {
+  background: linear-gradient(135deg, #C76B32 0%, #E5A06A 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.text-gradient-blue-purple {
-  background: linear-gradient(135deg, #60a5fa 0%, #a855f7 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.text-gradient-accent {
-  background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+.text-gradient-dark {
+  background: linear-gradient(135deg, #111111 0%, #444444 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -94,6 +84,6 @@
 }
 
 @keyframes scaleUp {
-  from { opacity: 0; transform: scale(0.95); }
+  from { opacity: 0; transform: scale(0.96); }
   to { opacity: 1; transform: scale(1); }
 }

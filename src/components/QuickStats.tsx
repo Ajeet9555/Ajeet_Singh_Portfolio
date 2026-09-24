@@ -4,29 +4,29 @@ import { Code, Briefcase, Award, Trophy } from 'lucide-react';
 
 export const QuickStats: React.FC = () => {
   const icons = [
-    <Code className="w-6 h-6 text-blue-400" />,
-    <Briefcase className="w-6 h-6 text-purple-400" />,
-    <Award className="w-6 h-6 text-cyan-400" />,
-    <Trophy className="w-6 h-6 text-amber-400" />,
+    <Code className="w-6 h-6 text-[#C76B32]" />,
+    <Briefcase className="w-6 h-6 text-[#C76B32]" />,
+    <Award className="w-6 h-6 text-[#C76B32]" />,
+    <Trophy className="w-6 h-6 text-[#C76B32]" />,
   ];
 
   return (
-    <section className="py-8 bg-[#0d121f] border-y border-slate-800/80 relative">
+    <section className="py-8 bg-[#F7F3EC] border-y border-[#E7E1D8] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {personalData.stats.map((stat, idx) => (
             <div
               key={stat.label}
-              className="p-5 rounded-2xl bg-[#131929]/80 border border-blue-500/15 backdrop-blur-md hover:border-blue-500/40 hover:bg-[#182035] transition-all duration-300 flex items-center gap-4 group"
+              className="p-5 rounded-2xl bg-white border border-[#E7E1D8] hover:border-[#E5A06A] hover:bg-[#F8E9DD]/40 transition-all duration-200 flex items-center gap-4 group shadow-warm-sm"
             >
-              <div className="p-3 rounded-xl bg-blue-950/60 border border-blue-500/20 group-hover:scale-110 transition-transform">
+              <div className="p-3 rounded-xl bg-[#F8E9DD] border border-[#E7D2C3] group-hover:scale-110 transition-transform">
                 {icons[idx % icons.length]}
               </div>
               <div>
-                <span className="font-heading font-extrabold text-2xl sm:text-3xl text-white group-hover:text-blue-400 transition-colors">
+                <span className="font-heading font-extrabold text-2xl sm:text-3xl text-[#111111] group-hover:text-[#C76B32] transition-colors">
                   {stat.value}
                 </span>
-                <span className="block text-xs sm:text-sm text-slate-400 font-medium">
+                <span className="block text-xs sm:text-sm text-[#5F5A54] font-medium">
                   {stat.label}
                 </span>
               </div>

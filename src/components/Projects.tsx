@@ -13,20 +13,20 @@ export const Projects: React.FC = () => {
     : projectsData.filter(p => p.filterCategories.includes(activeFilter as any));
 
   return (
-    <section id="projects" className="py-20 bg-[#0d121f] relative">
+    <section id="projects" className="py-20 bg-[#FAF8F3] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-950/60 border border-blue-500/30 text-blue-400 text-xs font-medium mb-3">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#F8E9DD] border border-[#E5A06A] text-[#C76B32] text-xs font-semibold mb-3 shadow-warm-sm">
               <FolderGit2 className="w-3.5 h-3.5" />
               <span>Production AI Repositories</span>
             </div>
-            <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-              Featured <span className="text-gradient-blue-purple">Projects</span>
+            <h2 className="text-3xl sm:text-5xl font-extrabold text-[#111111] tracking-tight">
+              Featured <span className="text-[#C76B32]">Projects</span>
             </h2>
-            <p className="mt-3 text-slate-400 text-base sm:text-lg max-w-2xl">
+            <p className="mt-3 text-[#5F5A54] text-base sm:text-lg max-w-2xl">
               A collection of my best work in AI/ML and software development.
             </p>
           </div>
@@ -35,7 +35,7 @@ export const Projects: React.FC = () => {
             href="https://github.com/Ajeet9555"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#131929] border border-blue-500/30 text-blue-400 text-xs font-semibold hover:border-blue-500 hover:text-white hover:bg-blue-600/10 transition-all self-start md:self-auto shadow-glow-sm"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white border border-[#E7E1D8] text-[#111111] text-xs font-semibold hover:border-[#E5A06A] hover:bg-[#F8E9DD] hover:text-[#C76B32] transition-all self-start md:self-auto shadow-warm-sm"
           >
             <span>View All Repositories on GitHub →</span>
           </a>
@@ -51,8 +51,8 @@ export const Projects: React.FC = () => {
                 onClick={() => setActiveFilter(category)}
                 className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 ${
                   isActive
-                    ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-glow-sm scale-105'
-                    : 'bg-[#131929] border border-blue-500/15 text-slate-300 hover:border-blue-500/40 hover:text-white hover:bg-[#182035]'
+                    ? 'bg-[#C76B32] text-white shadow-orange-sm scale-105'
+                    : 'bg-white border border-[#E7E1D8] text-[#5F5A54] hover:border-[#C76B32] hover:text-[#C76B32] hover:bg-[#F8E9DD]/60 shadow-warm-sm'
                 }`}
               >
                 {category}
@@ -82,3 +82,4 @@ export const Projects: React.FC = () => {
     </section>
   );
 };
+
