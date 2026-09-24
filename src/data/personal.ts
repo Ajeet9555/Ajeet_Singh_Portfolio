@@ -13,7 +13,7 @@ export const personalData = {
   linkedin: "https://www.linkedin.com/in/ajeetsinghrajput33",
   github: "https://github.com/Ajeet9555",
   resumeUrl: "/assets/resume/Ajeet_Singh_Resume.pdf",
-  profilePic: "/assets/profile/ajeet_portrait_pro.jpg",
+  profilePic: "/assets/profile/ajeet_original.jpg",
   openTo: [
     "Internship",
     "Full-time",
