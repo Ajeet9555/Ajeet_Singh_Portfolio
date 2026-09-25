@@ -180,6 +180,13 @@ export default async function handler(req: any, res: any) {
     ? history.filter((item: any) => item && (item.role === 'user' || item.role === 'assistant') && typeof item.content === 'string').slice(-8).map((item: any) => ({ role: item.role, content: item.content.slice(0, 1200) }))
     : [];
 
+  const normalizedMessage = message.trim().toLowerCase().replace(/[?!.,]+$/g, '');
+  if (['tell me about ajeet', 'about ajeet', 'introduce ajeet', 'give me an introduction of ajeet'].includes(normalizedMessage)) {
+    return res.status(200).json({
+      reply: "Ajeet Singh is an aspiring AI/ML Engineer pursuing a B.Tech in Computer Science with an AI & ML specialization at AKTU. He works with Python, Machine Learning, Deep Learning, NLP, and AI applications, with ML internship experience and projects including AI Career Intelligence and ModelPulse AI. He is open to AI/ML, Data Science, Data Analytics internships and full-time roles."
+    });
+  }
+
   try {
     const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
       method: 'POST',
@@ -196,7 +203,7 @@ export default async function handler(req: any, res: any) {
           ...safeHistory,
           { role: 'user', content: message.trim() },
         ],
-        max_tokens: 450,
+        max_tokens: 260,
       }),
     });
 
