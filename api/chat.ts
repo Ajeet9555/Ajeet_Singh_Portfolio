@@ -35,7 +35,7 @@ function extractText(data: any): string {
 
 export default async function handler(req: any, res: any) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed.' });
-  if (!process.env.OPENAI_API_KEY) return res.status(500).json({ error: 'Rudra is not configured yet. Please add OPENAI_API_KEY in Vercel.' });
+  if (!process.env.OPENROUTER_API_KEY) return res.status(500).json({ error: 'Rudra is not configured yet. Please add OPENROUTER_API_KEY in Vercel.' });
 
   const { message, history = [] } = req.body ?? {};
   if (typeof message !== 'string' || !message.trim()) return res.status(400).json({ error: 'Please enter a message.' });
@@ -46,43 +46,51 @@ export default async function handler(req: any, res: any) {
     : [];
 
   try {
-    const response = await fetch('https://api.openai.com/v1/responses', {
+    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${process.env.OPENAI_API_KEY}` },
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
+        'HTTP-Referer': 'https://ajeetsinghportfolio-drab.vercel.app',
+        'X-Title': 'Ajeet Singh Portfolio - Rudra',
+      },
       body: JSON.stringify({
-        model: 'gpt-5.6-luna',
-        instructions: portfolioContext,
-        input: [...safeHistory, { role: 'user', content: message.trim() }],
-        max_output_tokens: 350,
+        model: 'openrouter/free',
+        messages: [
+          { role: 'system', content: portfolioContext },
+          ...safeHistory,
+          { role: 'user', content: message.trim() },
+        ],
+        max_tokens: 350,
       }),
     });
 
     const data = await response.json();
     if (!response.ok) {
-      console.error('OpenAI API error:', response.status, data);
+      console.error('OpenRouter API error:', response.status, data);
 
       const code = data?.error?.code;
-      const message = data?.error?.message;
+      const providerMessage = data?.error?.message;
 
       if (response.status === 401) {
-        return res.status(502).json({ error: 'OpenAI rejected the API key. Check that OPENAI_API_KEY is a valid active key and redeploy Vercel.' });
+        return res.status(502).json({ error: 'OpenRouter rejected the API key. Check that OPENROUTER_API_KEY is a valid active key and redeploy Vercel.' });
       }
 
       if (response.status === 429) {
-        return res.status(502).json({ error: 'OpenAI API quota/rate limit reached. Check your OpenAI API billing and project limits.' });
+        return res.status(502).json({ error: 'OpenRouter rate limit reached. Please try again later.' });
       }
 
       if (response.status === 400) {
-        return res.status(502).json({ error: `OpenAI rejected the request${code ? ` (${code})` : ''}. Check the deployed API configuration.` });
+        return res.status(502).json({ error: `OpenRouter rejected the request${code ? ` (${code})` : ''}. Check the deployed API configuration.` });
       }
 
       return res.status(502).json({
         error: 'Rudra could not reach the AI service.',
-        ...(process.env.NODE_ENV !== 'production' && message ? { detail: message } : {}),
+        ...(process.env.NODE_ENV !== 'production' && providerMessage ? { detail: providerMessage } : {}),
       });
     }
 
-    const reply = extractText(data);
+    const reply = data?.choices?.[0]?.message?.content?.trim();
     return res.status(200).json({ reply: reply || 'I could not generate a response right now. Please try again.' });
   } catch (error) {
     console.error('Rudra request failed:', error);
