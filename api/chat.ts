@@ -196,7 +196,7 @@ export default async function handler(req: any, res: any) {
           ...safeHistory,
           { role: 'user', content: message.trim() },
         ],
-        max_tokens: 900,
+        max_tokens: 450,
       }),
     });
 
