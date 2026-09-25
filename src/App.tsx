@@ -12,6 +12,7 @@ import { Achievements } from './components/Achievements';
 import { Certificates } from './components/Certificates';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
+import { PortfolioChatbot } from './components/PortfolioChatbot';
 
 export const App: React.FC = () => {
   return (
@@ -31,6 +32,7 @@ export const App: React.FC = () => {
         <Contact />
       </main>
       <Footer />
+      <PortfolioChatbot />
     </div>
   );
 };
