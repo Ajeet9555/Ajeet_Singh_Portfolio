@@ -59,8 +59,27 @@ export default async function handler(req: any, res: any) {
 
     const data = await response.json();
     if (!response.ok) {
-      console.error('OpenAI API error:', data);
-      return res.status(502).json({ error: 'Rudra could not reach the AI service. Please try again.' });
+      console.error('OpenAI API error:', response.status, data);
+
+      const code = data?.error?.code;
+      const message = data?.error?.message;
+
+      if (response.status === 401) {
+        return res.status(502).json({ error: 'OpenAI rejected the API key. Check that OPENAI_API_KEY is a valid active key and redeploy Vercel.' });
+      }
+
+      if (response.status === 429) {
+        return res.status(502).json({ error: 'OpenAI API quota/rate limit reached. Check your OpenAI API billing and project limits.' });
+      }
+
+      if (response.status === 400) {
+        return res.status(502).json({ error: `OpenAI rejected the request${code ? ` (${code})` : ''}. Check the deployed API configuration.` });
+      }
+
+      return res.status(502).json({
+        error: 'Rudra could not reach the AI service.',
+        ...(process.env.NODE_ENV !== 'production' && message ? { detail: message } : {}),
+      });
     }
 
     const reply = extractText(data);
